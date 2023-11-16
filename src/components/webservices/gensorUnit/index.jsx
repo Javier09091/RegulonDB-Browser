@@ -2,8 +2,26 @@ import { useQuery } from "@apollo/client";
 import { query_getAllGUs, query_getGuById, query_getGuBySearch } from "./queries";
 import { DataVerifier } from "../../ui-components";
 
+/**
+ * Hook to retrieve data for all gene units.
+ *
+ * @export
+ * @returns {{ gusData: any; loading: any; error: any; }}
+ */
 export function useGetAllGus() {
+    
+    /**
+     * Execute the GraphQL query
+     *
+     * @type {*}
+     */
     const { data, loading, error } = useQuery(query_getAllGUs)
+    
+    /**
+     * Initialize an array to store gene unit data
+     *
+     * @type {array}
+     */
     let gusData = []
     try {
         if (data) {
@@ -22,8 +40,28 @@ export function useGetAllGus() {
     return { gusData, loading, error }
 }
 
+
+/**
+ * Hook to retrieve gene units based on a search keyword.
+ *
+ * @export
+ * @param {*} keyword - The search keyword.
+ * @returns {{ gusData: any; loading: any; error: any; }}
+ */
 export function useGetGuBySearch(keyword) {
+    
+    /**
+     * Execute the GraphQL query with variables
+     *
+     * @type {*}
+     */
     const { data, loading, error } = useQuery(query_getGuBySearch,{variables:{search: keyword}})
+    
+    /**
+     * Extracted gene units data from the GraphQL response.
+     *
+     * @type {array}
+     */
     let gusData = []
     //console.log(data);
     try {
@@ -45,8 +83,28 @@ export function useGetGuBySearch(keyword) {
     return { gusData, loading, error }
 }
 
+
+/**
+ * Hook to retrieve gene unit data by ID.
+ *
+ * @export
+ * @param {*} guId - The ID of the gene unit.
+ * @returns {{ guData: any; loading: any; error: any; }}
+ */
 export function useGetGuById(guId) {
+    
+    /**
+     *  GraphQL query to get gene unit data by ID.
+     *
+     * @type {*}
+     */
     const { data, loading, error } = useQuery(query_getGuById,{variables:{advancedSearch: `${guId}[_id]`}})
+    
+    /**
+     *  Extracted gene unit data from the GraphQL response.
+     *
+     * @type {array}
+     */
     let guData = []
     console.log(data);
     try {

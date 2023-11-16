@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+
+/**
+ * GraphQL query to retrieve genetic elements from a specified interval
+ *
+ * @type {*}
+ */
 export const query_GET_GE_Interval = gql`query GET_GE(
     $covered: Boolean = false
     $leftEndPosition: Int

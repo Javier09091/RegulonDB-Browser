@@ -2,8 +2,23 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { query_getAllGenes, query_getRankFromGeneList } from "./queries";
 
 
+/**
+ * Custom hook named useGetAllGenes that uses this useQuery hook to fetch data related to genes.
+ *
+ * @export
+ * @returns {{ geneList: any; loading: any; error: any; }}
+ */
 export function useGetAllGenes() {
+  
+     /**
+     * @type {object}
+     */
     const { loading, error, data } = useQuery(query_getAllGenes);
+    
+    /**
+     * The list of genes obtained from the GraphQL query.
+     * @type {Array}
+     */
     let geneList = []
     try {
         if (data) {

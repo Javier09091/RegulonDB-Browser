@@ -1,5 +1,10 @@
 import { gql } from "@apollo/client";
 import { fragment_CITATIONS, fragment_PAGINATION, fragment_ExternalCrossReferences } from "../commonQueries";
+
+/**
+ * GraphQL fragment for representing product information.
+ * @type {*}
+ */
 export const fragment_PRODUCTS = gql`fragment PRODUCTS on Products {
     anticodon
     cellularLocations
@@ -57,6 +62,12 @@ export const fragment_PRODUCTS = gql`fragment PRODUCTS on Products {
     type
   }`
 
+  
+/**
+ * GraphQL fragment for representing promoter information.
+ *
+ * @type {*}
+ */
 export const fragment_PROMOTER = gql`fragment PROMOTER on Promoter {
     bindsSigmaFactor {
       citations {
@@ -118,6 +129,12 @@ export const fragment_PROMOTER = gql`fragment PROMOTER on Promoter {
     }
   }`
 
+  
+/**
+ * GraphQL fragment for representing regulation information.
+ *
+ * @type {*}
+ */
 export const fragment_Regulation = gql`fragment REGULATION on Regulation {
     operon {
       arrangement {
@@ -152,6 +169,12 @@ export const fragment_Regulation = gql`fragment REGULATION on Regulation {
     }
   }`
 
+  
+/**
+ * GraphQL fragment for representing gene information.
+ *
+ * @type {*}
+ */
 export const fragment_GENE = gql`fragment GENE on Gene{
     bnumber
           centisomePosition
@@ -186,6 +209,12 @@ export const fragment_GENE = gql`fragment GENE on Gene{
           type
   }`
 
+  
+/**
+ * GraphQL fragment for representing ShineDalgarnos information.
+ *
+ * @type {*}
+ */
 export const fragment_SHINEDALGARNOS = gql`fragment SHINEDALGARNOS on ShineDalgarnos {
     distanceToGene
     _id
@@ -195,6 +224,12 @@ export const fragment_SHINEDALGARNOS = gql`fragment SHINEDALGARNOS on ShineDalga
     sequence
   }`
 
+  
+/**
+ * GraphQL fragment for representing growth conditions information.
+ *
+ * @type {*}
+ */
 export const fragment_GROWTHCONDITIONS = gql`fragment GROWTHCONDITIONS on GrowthConditions {
     citations {
       ...CITATIONS
@@ -205,6 +240,13 @@ export const fragment_GROWTHCONDITIONS = gql`fragment GROWTHCONDITIONS on Growth
     _id
   }`
 
+  
+/**
+ * GraphQL query to retrieve gene information based on specified parameters.
+ * @date 11/15/2023 - 5:46:00 PM
+ *
+ * @type {*}
+ */
 export const query_GET_GENE_BY = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}
@@ -265,6 +307,12 @@ query GetGeneInfo(
     }
   }`
 
+  
+  /**
+   * GraphQL query to retrieve main gene information based on a search string.
+   *
+   * @type {*}
+   */
   export const query_getMainGeneBySearch = gql`
   query getGeneById($search: String!) {
     getGenesBy(search: $search) {

@@ -1,5 +1,8 @@
 import { gql } from "@apollo/client";
-
+/**
+ * GraphQL fragment for Citations.
+ * @type {DocumentNode}
+ */
 export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     publication {
       _id
@@ -18,6 +21,10 @@ export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     }
   }`
 
+/**
+ * GraphQL fragment for Pagination information.
+ * @type {DocumentNode}
+ */
 export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     currentPage
     firstPage
@@ -26,7 +33,10 @@ export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     limit
     totalResults
   }`
-
+/**
+ * GraphQL fragment for External Cross References.
+ * @type {DocumentNode}
+ */
 export const fragment_ExternalCrossReferences = gql`fragment ExternalCrossReferences on ExternalCrossReferences {
     externalCrossReferenceId
     externalCrossReferenceName
@@ -91,6 +101,10 @@ export const fragment_PRODUCTS = gql`fragment PRODUCTS on Products {
     type
   }`
 
+/**
+ * GraphQL fragment for Products.
+ * @type {DocumentNode}
+ */
 export const fragment_PROMOTER = gql`fragment PROMOTER on Promoter {
     bindsSigmaFactor {
       citations {
@@ -152,6 +166,10 @@ export const fragment_PROMOTER = gql`fragment PROMOTER on Promoter {
     }
   }`
 
+  /**
+ * GraphQL fragment for Regulation.
+ * @type {DocumentNode}
+ */
 export const fragment_Regulation = gql`fragment REGULATION on Regulation {
     operon {
       arrangement {
@@ -186,6 +204,11 @@ export const fragment_Regulation = gql`fragment REGULATION on Regulation {
     }
   }`
 
+
+/**
+ * GraphQL fragment for Gene.
+ * @type {DocumentNode}
+ */
 export const fragment_GENE = gql`fragment GENE on Gene{
     bnumber
           centisomePosition
@@ -219,7 +242,10 @@ export const fragment_GENE = gql`fragment GENE on Gene{
           synonyms
           type
   }`
-
+/**
+ * GraphQL fragment for Shine-Dalgarno sequences.
+ * @type {DocumentNode}
+ */
 export const fragment_SHINEDALGARNOS = gql`fragment SHINEDALGARNOS on ShineDalgarnos {
     distanceToGene
     _id
@@ -229,6 +255,10 @@ export const fragment_SHINEDALGARNOS = gql`fragment SHINEDALGARNOS on ShineDalga
     sequence
   }`
 
+  /**
+ * GraphQL fragment for Growth Conditions.
+ * @type {DocumentNode}
+ */
 export const fragment_GROWTHCONDITIONS = gql`fragment GROWTHCONDITIONS on GrowthConditions {
     citations {
       ...CITATIONS
@@ -239,6 +269,10 @@ export const fragment_GROWTHCONDITIONS = gql`fragment GROWTHCONDITIONS on Growth
     _id
   }`
 
+/**
+ * GraphQL query to get gene information.
+ * @type {DocumentNode}
+ */
 export const query_GET_GENE_INFO = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}
@@ -285,6 +319,10 @@ ${fragment_GROWTHCONDITIONS}
     }
   }`
 
+/**
+ * GraphQL query to get gene information by specified parameters.
+ * @type {DocumentNode}
+ */
 export const query_GET_GENE_BY = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}
