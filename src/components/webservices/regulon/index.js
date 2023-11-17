@@ -9,6 +9,15 @@ import {
 } from "./query";
 import { useState } from "react";
 
+
+/**
+ * This hook is using Apollo Client's useQuery hook to fetch regulon data based on a search parameter. 
+ *
+ * @export
+ * @param {{ search: any; }} param0
+ * @param {*} param0.search
+ * @returns {{ regulonsData: any; error: any; loading: any; }}
+ */
 export function useGetRegulonBySearch({ search }) {
   const { data, error, loading } = useQuery(query_GET_REGULON_BYSearch, {
     variables: {
@@ -30,6 +39,13 @@ export function useGetRegulonBySearch({ search }) {
   return { regulonsData, error, loading };
 }
 
+/**
+ * This hook is fetching regulon data based on an ID using Apollo Client's useQuery and useLazyQuery hooks. 
+ *
+ * @export
+ * @param {*} id
+ * @returns {{ regulonData: any; error: any; loading: any; }}
+ */
 export function useGetRegulonData(id) {
   //console.log(query_GET_REGULON_BY);
   const options = {
@@ -87,6 +103,13 @@ export function useGetRegulonData(id) {
   return { regulonData, error: err, loading };
 }
 
+
+/**
+ * This hook is fetching all regulon data using Apollo Client's useQuery hook.
+ *
+ * @export
+ * @returns {{ allRegulonData: any; error: any; loading: any; }}
+ */
 export function useGetAllRegulon() {
   const { data, error, loading } = useQuery(query_GET_ALL_REGULON);
   let allRegulonData;

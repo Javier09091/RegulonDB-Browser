@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+
+/**
+ * It creates a fragment for citations in your GraphQL queries. It includes information about publications and evidence.
+ *
+ * @type {*}
+ */
 export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     publication {
       _id
@@ -18,6 +24,12 @@ export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     }
   }`
 
+
+/**
+ * This fragment is intended for paginating query results. It includes fields commonly associated with pagination.
+ *
+ * @type {*}
+ */
 export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
   currentPage
   firstPage
@@ -27,6 +39,11 @@ export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
   totalResults
 }`
 
+/**
+ * It retrieves data associated with an AligmentMatrix in a structured manner. 
+ *
+ * @type {*}
+ */
 export const fragment_ALIGMENTMATRIX = gql`fragment ALIGMENTMATRIX on AligmentMatrix {
   aligment
   consensus

@@ -1,14 +1,13 @@
 import { DataVerifier } from "../../ui-components";
 
-/**
- *
- * @param {object} operon_data |
- * @returns array of objects with ids
- * Esta funcion toma un objeto de operon_data y devuelve un objeto con los ids de los operones, genes, tus y rBS
- *
- * {}
- */
 
+/**
+ * Processes operon data to extract related IDs for transcription units, genes, promoters, regulators, regulatory interactions, terminators, and their groupings.
+ *
+ * @export
+ * @param {*} operon
+ * @returns {{}}
+ */
 export function getRelatedIdsByOperonData(operon) {
   let ids = {};
   try {
@@ -108,6 +107,14 @@ export function getRelatedIdsByOperonData(operon) {
   return ids;
 }
 
+
+/**
+ * It is a utility function that checks if an element exists in an array. If the element is not found in the array, it is pushed to the array, and the updated array is returned.
+ *
+ * @param {{}} [array=[]]
+ * @param {*} element
+ * @returns {{}}
+ */
 function IfNoExistPush(array = [], element) {
   if (!array.find((e) => e === element)) {
     array.push(element);

@@ -1,5 +1,12 @@
 import { gql } from "@apollo/client";
 
+
+/**
+ * 
+ * The fragment_CITATIONS is a GraphQL fragment that defines a reusable piece of a query for retrieving information about citations associated with an object. 
+ *
+ * @type {*}
+ */
 export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
   publication {
     _id
@@ -18,6 +25,12 @@ export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
   }
 }`
 
+
+/**
+ * The fragment_PAGINATION is a GraphQL fragment that defines a reusable piece of a query for retrieving pagination information. 
+ *
+ * @type {*}
+ */
 export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     currentPage
     firstPage
@@ -27,6 +40,13 @@ export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     totalResults
   }`
 
+  
+/**
+ * 
+ * The fragment_ExternalCrossReferences is a GraphQL fragment that defines a reusable piece of a query for retrieving external cross-reference information. 
+ *
+ * @type {*}
+ */
 export const fragment_ExternalCrossReferences = gql`fragment ExternalCrossReferences on ExternalCrossReferences {
   externalCrossReferenceId
   externalCrossReferenceName
@@ -34,6 +54,12 @@ export const fragment_ExternalCrossReferences = gql`fragment ExternalCrossRefere
   url
 }`
 
+
+/**
+ * The fragment_SrnaProducts is a GraphQL fragment that defines a reusable piece of a query for retrieving information about small RNA (sRNA) products.
+ *
+ * @type {*}
+ */
 export const fragment_SrnaProducts = gql`fragment SRNA_PRODUCTS on srnaProduct {
   citations {
     ...CITATIONS
@@ -54,6 +80,13 @@ export const fragment_SrnaProducts = gql`fragment SRNA_PRODUCTS on srnaProduct {
   synonyms
 }`
 
+
+/**
+ * 
+ * The fragment_RegulatoryInteractions is a GraphQL fragment that defines a reusable piece of a query for retrieving information about regulatory interactions involving small RNA (sRNA). 
+ *
+ * @type {*}
+ */
 export const fragment_RegulatoryInteractions = gql`fragment RegulatoryInteractions on srnaRegulatoryInteractions {
   _id
   citations {
@@ -81,6 +114,12 @@ export const fragment_RegulatoryInteractions = gql`fragment RegulatoryInteractio
   }
 }`
 
+
+/**
+ * This fragment represents a summary object with fields activated, dual, repressed, total, and unknown
+ *
+ * @type {*}
+ */
 const fragment_SrnaSummary = gql`fragment SummaryObject on SummaryObject {
   activated
   dual
@@ -110,6 +149,12 @@ fragment Summary on SrnaSummary {
   }
 }`
 
+
+/**
+ * It retrieves information about small RNAs. The query utilizes several fragments (CITATIONS, PAGINATION, ExternalCrossReferences, SrnaProducts, RegulatoryInteractions, and SrnaSummary) to structure and organize the requested data. 
+ *
+ * @type {*}
+ */
 export const query_getAllSRNA = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}
@@ -138,6 +183,13 @@ query getAllSRNA($limit: Int, $page: Int) {
 }   
 `
 
+
+/**
+ * 
+ *The GraphQL query query_getSrnaBy is designed to retrieve information about small RNAs based on specified parameters. This query includes several fragments (CITATIONS, PAGINATION, ExternalCrossReferences, SrnaProducts, RegulatoryInteractions, and SrnaSummary) to structure and organize the requested data. 
+ *
+ * @type {*}
+ */
 export const query_getSrnaBy = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}

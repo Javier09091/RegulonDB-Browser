@@ -4,6 +4,13 @@ import { DataVerifier } from "../../ui-components";
 
 
 
+/**
+ * Utilizes the useQuery hook from Apollo Client to fetch data using the query_GET_PHRASE_OF
+ *
+ * @export
+ * @param {*} id
+ * @returns {{ phrases: any; propertiesPhrase: {}; error: any; loading: any; }}
+ */
 export function useGetPhraseByObjectId(id) {
     const { loading, error, data } = useQuery(query_GET_PHRASE_OF, {
         variables: { objectId: id },

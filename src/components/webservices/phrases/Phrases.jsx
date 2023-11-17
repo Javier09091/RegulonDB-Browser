@@ -3,6 +3,11 @@ import { useQuery } from '@apollo/react-hooks';
 import { query_GET_PHRASE_OF } from './gql'
 
 
+/**
+ * 
+ * The GetPhraseOf component is a functional component that uses the useQuery hook from Apollo Client to fetch data using the query_GET_PHRASE_OF GraphQL query.
+ *
+*/
 const GetPhraseOf = ({
     id,
     status = () => { },
@@ -15,7 +20,7 @@ const GetPhraseOf = ({
         if (loading) {
             status('loading')
         }
-        if (data ) {
+        if (data) {
             try {
                 resoultsData(data.getPhraseOf)
                 status('done')

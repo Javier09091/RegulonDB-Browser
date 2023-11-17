@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+
+/**
+ * This GraphQL fragment is designed to capture information related to citations, providing details about the publication and evidence associated with a particular piece of information.
+ *
+ * @type {*}
+ */
 export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     publication {
       _id
@@ -18,6 +24,12 @@ export const fragment_CITATIONS = gql`fragment CITATIONS on Citations {
     }
   }`
 
+  
+/**
+ * This GraphQL fragment is designed to capture pagination-related information.
+ *
+ * @type {*}
+ */
 export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     currentPage
     firstPage
@@ -26,6 +38,12 @@ export const fragment_PAGINATION = gql`fragment PAGINATION on Pagination {
     totalResults
   }`
 
+  
+/**
+ * This GraphQL query is designed to retrieve information about sigmulons based on advanced search criteria.
+ *
+ * @type {*}
+ */
 export const query_getSigmulonBy = gql`
 ${fragment_CITATIONS}
 ${fragment_PAGINATION}
@@ -103,6 +121,11 @@ query getSigmulon($advancedSearch: String){
   }
 `
 
+/**
+ * This GraphQL query is designed to retrieve information about all sigmulons in the system.
+ *
+ * @type {*}
+ */
 export const query_getAllSigmulon = gql`
 query getAllSigmulon {
     getAllSigmulon {

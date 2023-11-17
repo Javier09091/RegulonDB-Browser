@@ -2,6 +2,14 @@ import { useQuery } from "@apollo/client";
 import { DataVerifier } from "../../ui-components";
 import { query_getSigmulonBy, query_getSigmulonBySearch } from "./query";
 
+
+/**
+ * This function utilizes the Apollo Client's useQuery hook to perform a GraphQL query to retrieve sigmulon data based on a specified search keyword.
+ *
+ * @export
+ * @param {*} keyword
+ * @returns {{ sigmulonData: any; error: any; loading: any; }}
+ */
 export function useGetSigmulonBySearch(keyword) {
   const { data, loading, error } = useQuery(query_getSigmulonBySearch, {
     variables: { search: keyword },
@@ -26,6 +34,14 @@ export function useGetSigmulonBySearch(keyword) {
   return { sigmulonData, error, loading };
 }
 
+
+/**
+ * This function utilizes the Apollo Client's useQuery hook to perform a GraphQL query to retrieve detailed information about a sigmulon based on its unique identifier.
+ *
+ * @export
+ * @param {*} sigmulonId
+ * @returns {{ sigmulonData: any; error: any; loading: any; }}
+ */
 export function useGetSigmulonById(sigmulonId) {
   const { data, error, loading } = useQuery(query_getSigmulonBy, {
     variables: {
